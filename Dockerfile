@@ -6,7 +6,6 @@ RUN cd /etc/yum.repos.d/ && wget http://download.opensuse.org/repositories/isv:o
 
 EXPOSE 80 8080
 
-RUN echo "chown -R apache /var/www/html/owncloud" >> /etc/startup.sh
-RUN echo "/usr/sbin/httpd -DFOREGROUND" >> /etc/startup.sh
+ADD startup.sh /etc/startup.sh
 
 CMD /etc/startup.sh
