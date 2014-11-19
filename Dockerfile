@@ -9,5 +9,4 @@ EXPOSE 80 8080
 RUN echo "chown -R apache /var/www/html/owncloud" >> /etc/startup.sh
 RUN echo "/usr/sbin/httpd -DFOREGROUND" >> /etc/startup.sh
 
-ENTRYPOINT sh
 CMD /etc/startup.sh
