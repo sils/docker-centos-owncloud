@@ -6,6 +6,7 @@ RUN cd /etc/yum.repos.d/ && wget http://download.opensuse.org/repositories/isv:o
 
 EXPOSE 80 8080
 
-ADD startup.sh /etc/startup.sh
+ADD startup.sh /startup.sh
+RUN chmod +x /startup.sh
 
-CMD /etc/startup.sh
+CMD /startup.sh
