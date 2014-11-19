@@ -8,6 +8,4 @@ EXPOSE 80 8080
 
 RUN chown -R apache /var/www
 
-VOLUME ["/var/www/html/owncloud/data"]
-
 ENTRYPOINT /usr/sbin/httpd -DFOREGROUND
