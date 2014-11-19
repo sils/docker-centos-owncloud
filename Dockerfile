@@ -6,6 +6,7 @@ RUN cd /etc/yum.repos.d/ && wget http://download.opensuse.org/repositories/isv:o
 
 EXPOSE 80 8080
 
-RUN chown -R apache /var/www
+RUN mkdir -p /var/www/html/owncloud
+RUN chown -R apache /var/www/html/owncloud
 
 ENTRYPOINT /usr/sbin/httpd -DFOREGROUND
