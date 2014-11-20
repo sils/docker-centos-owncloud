@@ -8,4 +8,7 @@ EXPOSE 80 8080
 
 VOLUME /var/www/html/owncloud/data /var/www/html/owncloud/config
 
-CMD /usr/sbin/httpd -DFOREGROUND -k start
+ADD startup.sh /startup.sh
+RUN chmod +x /startup.sh
+
+CMD /startup.sh
