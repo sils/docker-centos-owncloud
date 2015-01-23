@@ -13,6 +13,9 @@ RUN yum update -y && \
 RUN pecl install apc
 ADD apc.ini /etc/php.d/apc.ini
 
+RUN mkdir -p /template
+ADD template/owncloud.conf /template/owncloud.conf
+
 EXPOSE 80 8080
 
 VOLUME /var/www/html/owncloud/data /var/www/html/owncloud/config /var/www/html/owncloud/extra_apps
