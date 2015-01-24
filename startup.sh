@@ -14,6 +14,7 @@ else
     OWNCLOUD_ALIAS=""
   else
     OWNCLOUD_ALIAS="<IfModule mod_alias.c> Alias /$OWNCLOUD_URL_PATH /var/www/html/owncloud </IfModule>"
+  fi
   sed -e "s#\$OWNCLOUD_ALIAS#$OWNCLOUD_ALIAS#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
   
   echo "Generating autoconfig.php db part through template."
@@ -39,7 +40,7 @@ else
       sed -e "s#\$MYSQL_ENV_MYSQL_ROOT_PASSWORD#$MYSQL_ENV_MYSQL_ROOT_PASSWORD#" < /template/autoconfig_mysql.php > /var/www/html/owncloud/config/autoconfig.php
       sed -i '' -e "s#\$MYSQL_HOST#$MYSQL_HOST#" /var/www/html/owncloud/config/autoconfig.php
       sed -i '' -e "s#\$DB_PREFIX#$DB_PREFIX#" /var/www/html/owncloud/config/autoconfig.php
-    esac
+  esac
 fi
 
 /usr/sbin/httpd -DFOREGROUND -k start
