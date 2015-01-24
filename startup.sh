@@ -41,6 +41,9 @@ else
       sed -i '' -e "s#\$MYSQL_HOST#$MYSQL_HOST#" /var/www/html/owncloud/config/autoconfig.php
       sed -i '' -e "s#\$DB_PREFIX#$DB_PREFIX#" /var/www/html/owncloud/config/autoconfig.php
   esac
+  
+  echo "Finishing generation of autoconfig.php with footer."
+  cat /template/autoconfig_footer.php >> /var/www/html/owncloud/config/autoconfig.php
 fi
 
 /usr/sbin/httpd -DFOREGROUND -k start
