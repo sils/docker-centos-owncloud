@@ -15,6 +15,7 @@ ADD apc.ini /etc/php.d/apc.ini
 
 RUN mkdir -p /template
 ADD template/owncloud.conf /template/owncloud.conf
+ADD template/autoconfig_sqlite.php /template/autoconfig_sqlite.php
 
 EXPOSE 80 8080
 
