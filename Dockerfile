@@ -17,6 +17,7 @@ RUN mkdir -p /template
 ADD template/owncloud.conf /template/owncloud.conf
 ADD template/autoconfig_sqlite.php /template/autoconfig_sqlite.php
 ADD template/autoconfig_mysql.php /template/autoconfig_mysql.php
+ADD template/autoconfig_footer.php /template/autoconfig_footer.php
 
 EXPOSE 80 8080
 
