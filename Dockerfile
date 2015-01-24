@@ -18,7 +18,7 @@ ADD template/owncloud.conf /template/owncloud.conf
 
 EXPOSE 80 8080
 
-VOLUME /var/www/html/owncloud/data /var/www/html/owncloud/config /var/www/html/owncloud/extra_apps
+VOLUME /var/www/html/owncloud/data /var/www/html/owncloud/config /var/www/html/owncloud/extra_apps /etc/httpd/conf.d/
 
 ADD startup.sh /startup.sh
 RUN chmod +x /startup.sh
