@@ -1,6 +1,5 @@
 <?php
 $AUTOCONFIG = array(
-  "directory"     => "/data",
   "dbtype"        => "mysql",
   "dbname"        => "owncloud",
   "dbuser"        => "root",

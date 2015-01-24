@@ -1,3 +1,4 @@
+  "directory"     => "/data",
   "appcodechecker" => false,
   "apps_paths" => array (
     0 => array (
