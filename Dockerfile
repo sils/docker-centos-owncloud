@@ -19,7 +19,8 @@ ADD template/autoconfig_mysql.php /template/autoconfig_mysql.php
 ADD template/autoconfig_footer.php /template/autoconfig_footer.php
 ADD template/apc.ini /template/apc.ini
 
-EXPOSE 80 8080
+EXPOSE 80 80
+EXPOSE 443 443
 
 VOLUME /var/www/html/owncloud/data /var/www/html/owncloud/config /var/www/html/owncloud/extra_apps /etc/httpd/conf.d/
 
