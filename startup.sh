@@ -42,6 +42,10 @@ else
     DB_TYPE="sqlite"
   fi
   
+  if [ -z "$DB_PREFIX" ]; then
+    DB_PREFIX="oc_"
+  fi
+  
   echo "Using db backend $DB_TYPE."
   case $DB_TYPE in
     sqlite)
