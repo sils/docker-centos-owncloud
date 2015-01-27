@@ -9,6 +9,12 @@ else
   chown -R apache /var/www/html/owncloud/data
   chown -R apache /var/www/html/owncloud/config
   
+  echo "Generating apc.ini for php through template."
+  if [ -z "$PHP_APC_SIZE" ]; then
+    PHP_APC_SIZE="512M"
+  fi
+  sed -e "s#\$PHP_APC_SIZE#$PHP_APC_SIZE#" < /template/apc.ini > /etc/php.d/apc.ini
+  
   echo "Generating SSL self-signed certificate."
   if [ -r "$FQDN" ]; then
     FQDN="example.com"
