@@ -58,13 +58,4 @@ This variable is required if you linked the owncloud container to a mysql/mariad
 
 `docker run --name some-mariadb -e MYSQL_ROOT_PASSWORD=mysecretpassword -d mariadb`
 
-`docker run --name some-owncloud -e PHP_APC_SIZE=512M \`
-`       --link some-mariadb:mysql \`
-`       -e FQDN="example.com" \`
-`       -e SSL_COUNTRY="US" \`
-`       -e SSL_STATE="New York" \`
-`       -e SSL_LOCALITY="Brooklyn" \`
-`       -e SSL_ORGANISATION="Example Brooklyn Company" \`
-`       -e DB_PREFIX="oc_" \`
-`       -e MYSQL_ROOT_PASSWORD="mysecretpassword" \`
-`       -d cw1900/docker-centos-owncloud`
+`docker run --name some-owncloud -e PHP_APC_SIZE=512M --link some-mariadb:mysql -e FQDN="example.com" -e SSL_COUNTRY="US" -e SSL_STATE="New York" -e SSL_LOCALITY="Brooklyn" -e SSL_ORGANISATION="Example Brooklyn Company" -e DB_PREFIX="oc_" -e MYSQL_ROOT_PASSWORD="mysecretpassword" -d cw1900/docker-centos-owncloud`
