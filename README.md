@@ -43,7 +43,7 @@ Same as `SSL_COUNTRY` but for your state. If not set, `SSL_STATE` is set to `New
 Same as `SSL_COUNTRY` but for your locality. If not set, `SSL_LOCALITY` is set to `Brooklyn`.
 
 ### `SSL_ORGANISATION`
-
+<!--  -->
 Same as `SSL_COUNTRY` but for your organisation name. If not set, `SSL_ORGANISATION` is set to `Example Brooklyn Company`.
 
 ### `DB_PREFIX`
@@ -56,13 +56,15 @@ This variable is required if you linked the owncloud container to a mysql/mariad
 
 ## Example
 
-  docker run --name some-owncloud -e PHP_APC_SIZE=512M \
-    --link some-mariadb:mysql
-    -e FQDN="example.com" \
-    -e SSL_COUNTRY="US"
-    -e SSL_STATE="New York" \
-    -e SSL_LOCALITY="Brooklyn" \
-    -e SSL_ORGANISATION="Example Brooklyn Company" \
-    -e DB_PREFIX="oc_" \
-    -e MYSQL_ROOT_PASSWORD="MYSQL_PASSWORD" \
-    -d cw1900/docker-centos-owncloud
+`docker run --name some-mariadb -e MYSQL_ROOT_PASSWORD=mysecretpassword -d mariadb`
+
+`docker run --name some-owncloud -e PHP_APC_SIZE=512M \`
+`       --link some-mariadb:mysql \`
+`       -e FQDN="example.com" \`
+`       -e SSL_COUNTRY="US" \`
+`       -e SSL_STATE="New York" \`
+`       -e SSL_LOCALITY="Brooklyn" \`
+`       -e SSL_ORGANISATION="Example Brooklyn Company" \`
+`       -e DB_PREFIX="oc_" \`
+`       -e MYSQL_ROOT_PASSWORD="mysecretpassword" \`
+`       -d cw1900/docker-centos-owncloud`
