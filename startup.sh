@@ -53,8 +53,12 @@ else
       ;;
 
     linked_mysql)
+      if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
+        echo "MYSQL_ROOT_PASSWORD was not given! Configuration aborted!"
+        exit 1
+      fi
       MYSQL_HOST=`echo $MYSQL_NAME | /bin/awk -F "/" '{print $3}'`
-      sed -e "s#\$MYSQL_ENV_MYSQL_ROOT_PASSWORD#$MYSQL_ENV_MYSQL_ROOT_PASSWORD#" < /template/autoconfig_mysql.php > /var/www/html/owncloud/config/autoconfig.php
+      sed -e "s#\$MYSQL_ROOT_PASSWORD#$MYSQL_ROOT_PASSWORD#" < /template/autoconfig_mysql.php > /var/www/html/owncloud/config/autoconfig.php
       sed -i '' -e "s#\$MYSQL_HOST#$MYSQL_HOST#" /var/www/html/owncloud/config/autoconfig.php
       sed -i '' -e "s#\$DB_PREFIX#$DB_PREFIX#" /var/www/html/owncloud/config/autoconfig.php
   esac
