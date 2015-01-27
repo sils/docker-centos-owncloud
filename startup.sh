@@ -9,13 +9,26 @@ else
   chown -R apache /var/www/html/owncloud/data
   chown -R apache /var/www/html/owncloud/config
   
-  echo "Generating owncloud.conf for apache through template."
-  if [ -z "$OWNCLOUD_URL_PATH" ]; then
-    OWNCLOUD_ALIAS=""
-  else
-    OWNCLOUD_ALIAS="<IfModule mod_alias.c> Alias /$OWNCLOUD_URL_PATH /var/www/html/owncloud </IfModule>"
+  echo "Generating SSL self-signed certificate."
+  if [ -r "$FQDN" ]; then
+    FQDN="example.com"
   fi
-  sed -e "s#\$OWNCLOUD_ALIAS#$OWNCLOUD_ALIAS#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
+  if [ -z "$SSL_COUNTRY" ]; then
+    SSL_COUNTRY="US"
+  fi
+  if [ -z "$SSL_STATE" ]; then
+    SSL_STATE="New York"
+  fi
+  if [ -z "$SSL_LOCALITY" ]; then
+    SSL_LOCALITY="Brooklyn"
+  fi
+  if [ -z "$SSL_ORGANISATION" ]; then
+    SSL_ORGANISATION="Example Brooklyn Company"
+  fi
+  openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/server.key -x509 -days 1825 -out /etc/httpd/server.csr -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN"
+  
+  echo "Generating owncloud.conf for apache through template."
+  sed -e "s#\$FQDN#$FQDN#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
   
   echo "Generating autoconfig.php db part through template."
   if [ -z "$MYSQL_NAME" ]; then
