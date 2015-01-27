@@ -7,6 +7,7 @@
 ownCloud is a software system for what is commonly termed "file hosting". As such, ownCloud is very similar to the widely used Dropbox, with the primary difference being that ownCloud is free and open-source, and thereby allowing anyone to install and operate it without charge on a private server, with no limits on storage space (except for hard disk quota or capacity) or the number of connected clients.
 
 > [wikipedia.org/wiki/ownCloud](http://en.wikipedia.org/wiki/Owncloud)
+
 ![logo](http://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/OwnCloud2-Logo.svg/200px-OwnCloud2-Logo.svg.png)
 
 # How to use this image
