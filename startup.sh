@@ -18,7 +18,7 @@ else
   sed -e "s#\$OWNCLOUD_ALIAS#$OWNCLOUD_ALIAS#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
   
   echo "Generating autoconfig.php db part through template."
-  if [ -z "$MYSQL_ENV_MYSQL_ROOT_PASSWORD" ]; then
+  if [ -z "$MYSQL_NAME" ]; then
     echo "No linked mysql container detected."
   else
     echo "Linked mysql container detected with id $HOSTNAME and version $MYSQL_ENV_MYSQL_VERSION."
