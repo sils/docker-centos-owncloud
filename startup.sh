@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z "FIRST_RUN" ]; then
+if [ -e /INSTALLED ]; then
   echo "Container already configured."
 else
   echo "Setting up container."
@@ -44,6 +44,8 @@ else
   
   echo "Finishing generation of autoconfig.php with footer."
   cat /template/autoconfig_footer.php >> /var/www/html/owncloud/config/autoconfig.php
+  
+  touch /INSTALLED
 fi
 
 /usr/sbin/httpd -DFOREGROUND -k start
