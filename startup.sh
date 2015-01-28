@@ -5,10 +5,6 @@ if [ -e /INSTALLED ]; then
 else
   echo "Setting up container."
   
-  echo "Correcting permissions on volumes."
-  chown -R apache /var/www/html/owncloud/data
-  chown -R apache /var/www/html/owncloud/config
-  
   echo "Generating apc.ini for php through template."
   if [ -z "$PHP_APC_SIZE" ]; then
     PHP_APC_SIZE="512M"
@@ -71,6 +67,11 @@ else
   
   echo "Finishing generation of autoconfig.php with footer."
   cat /template/autoconfig_footer.php >> /var/www/html/owncloud/config/autoconfig.php
+  
+  echo "Correcting permissions on volumes."
+  chown -R apache /var/www/html/owncloud
+  chown -R apache /etc/httpd
+  chown -R apache /etc/php.d
   
   touch /INSTALLED
 fi
