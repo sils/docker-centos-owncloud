@@ -34,11 +34,11 @@ As you might suggest, you can set your fully qualified domain name in this varia
 
 With this variable you can set your country which is set into the self-signed certificate. If not set, `SSL_COUNTRY` is set to `US`.
 
-## `SSL_STATE`
+### `SSL_STATE`
 
 Same as `SSL_COUNTRY` but for your state. If not set, `SSL_STATE` is set to `New York`.
 
-## `SSL_LOCALITY`
+### `SSL_LOCALITY`
 
 Same as `SSL_COUNTRY` but for your locality. If not set, `SSL_LOCALITY` is set to `Brooklyn`.
 
