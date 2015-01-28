@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -e /INSTALLED ]; then
+if [ -e /var/www/html/owncloud/INSTALLED ]; then
   echo "Container already configured."
 else
   echo "Setting up container."
@@ -73,7 +73,7 @@ else
   chown -R apache /etc/httpd
   chown -R apache /etc/php.d
   
-  touch /INSTALLED
+  touch /var/www/html/owncloud/INSTALLED
 fi
 
 /usr/sbin/httpd -DFOREGROUND -k start
