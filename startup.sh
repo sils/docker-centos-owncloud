@@ -25,9 +25,23 @@ else
     SSL_LOCALITY="Brooklyn"
   fi
   if [ -z "$SSL_ORGANISATION" ]; then
-    SSL_ORGANISATION="ExampleCompany"
+    SSL_ORGANISATION="Example Brooklyn Company"
   fi
-  openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/conf.d/server.key -x509 -days 1825 -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN" -out /etc/httpd/conf.d/server.crt
+  if [ -z "$SSL_ORGANISATION_UNIT" ]; then
+    SSL_ORGANISATION_UNIT="none"
+  fi
+  #openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/conf.d/server.key -x509 -days 1825 -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN" -out /etc/httpd/conf.d/server.crt
+  openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/conf.d/server.key -x509 -days 1825 -out /etc/httpd/conf.d/server.crt <<EOF
+  ${SSL_COUNTRY}
+  ${SSL_STATE}
+  ${SSL_LOCALITY}
+  ${SSL_ORGANISATION}
+  .
+  ${FQDN}
+  .
+  .
+  .
+  EOF
   
   echo "Generating owncloud.conf for apache through template."
   sed -e "s#\$FQDN#$FQDN#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
