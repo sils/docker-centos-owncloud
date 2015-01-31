@@ -6,7 +6,7 @@ RUN yum update -y && \
     yum install wget -y && \
     cd /etc/yum.repos.d/ && \
     wget http://download.opensuse.org/repositories/isv:ownCloud:community/CentOS_CentOS-7/isv:ownCloud:community.repo && \
-    yum install httpd httpd-devel php php-dom php-pear php-mysql php-gd php-mbstring php-pspell php-pdo php-xml php-devel sqlite pcre-devel gcc make openssl -y && \
+    yum install httpd httpd-devel php php-dom php-pear php-mysql php-gd php-mbstring php-pspell php-pdo php-xml php-devel sqlite pcre-devel gcc make openssl mod_ssl -y && \
     yum install owncloud -y && \
     yum clean all
 
