@@ -31,7 +31,7 @@ else
     SSL_ORGANISATION_UNIT="IT"
   fi
   #openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/conf.d/server.key -x509 -days 1825 -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN" -out /etc/httpd/conf.d/server.crt
-  openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/httpd/conf.d/server.pem -out /etc/httpd/conf.d/server.crt -days 1825 -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/CN=$FQDN/O=$SSL_ORGANISATION/OU=$SSL_ORGANISATION_UNIT"
+  openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/httpd/conf.d/server.pem -out /etc/httpd/conf.d/server.crt -days 1825 -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN/OU=$SSL_ORGANISATION_UNIT"
   
   echo "Generating owncloud.conf for apache through template."
   sed -e "s#\$FQDN#$FQDN#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
