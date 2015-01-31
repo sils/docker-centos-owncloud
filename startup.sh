@@ -27,14 +27,7 @@ else
   if [ -z "$SSL_ORGANISATION" ]; then
     SSL_ORGANISATION="ExampleCompany"
   fi
-  echo "Generating private key."
-  openssl genrsa -des3 -nodes -out /etc/httpd/conf.d/server.key 2048
-  #openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -nodes -out /etc/httpd/conf.d/server.key
-  echo "Generating certificate signing request."
-  openssl req -new -sha256 -key /etc/httpd/conf.d/server.key -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN" -out /etc/httpd/conf.d/server.csr
-  echo "Generating SSL self-signed certificate with csr and private key."
-  openssl x509 -req -days 1825 -in /etc/httpd/conf.d/server.csr -signkey /etc/httpd/conf.d/server.key -out /etc/httpd/conf.d/server.crt
-  #openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/conf.d/server.key -x509 -days 1825 -out /etc/httpd/conf.d/server.crt -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN"
+  openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/conf.d/server.key -x509 -days 1825 -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN" -out /etc/httpd/conf.d/server.crt
   
   echo "Generating owncloud.conf for apache through template."
   sed -e "s#\$FQDN#$FQDN#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
