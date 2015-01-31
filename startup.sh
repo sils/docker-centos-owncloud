@@ -12,7 +12,7 @@ else
   sed -e "s#\$PHP_APC_SIZE#$PHP_APC_SIZE#" < /template/apc.ini > /etc/php.d/apc.ini
   
   echo "Generating SSL self-signed certificate."
-  if [ -r "$FQDN" ]; then
+  if [ -z "$FQDN" ]; then
     FQDN="example.com"
   fi
   if [ -z "$SSL_COUNTRY" ]; then
