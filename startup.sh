@@ -25,7 +25,7 @@ else
     SSL_LOCALITY="Brooklyn"
   fi
   if [ -z "$SSL_ORGANISATION" ]; then
-    SSL_ORGANISATION="Example Brooklyn Company"
+    SSL_ORGANISATION="ExampleCompany"
   fi
   openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/conf.d/server.key -x509 -days 1825 -out /etc/httpd/conf.d/server.crt -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN"
   
