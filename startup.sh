@@ -30,14 +30,8 @@ else
   if [ -z "$SSL_ORGANISATION_UNIT" ]; then
     SSL_ORGANISATION_UNIT="IT"
   fi
-  #openssl req -newkey rsa:2048 -nodes -keyout /etc/httpd/conf.d/server.key -x509 -days 1825 -subj "/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/CN=$FQDN" -out /etc/httpd/conf.d/server.crt
-  openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/httpd/conf.d/server.pem -out /etc/httpd/conf.d/server.crt -days 1825 -subj "/CN=$FQDN/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/OU=$SSL_ORGANISATION_UNIT"
   
-  echo "Removing ssl.conf from apache config directory."
-  rm -f /etc/httpd/conf.d/ssl.conf
-  
-  echo "Generating owncloud.conf for apache through template."
-  sed -e "s#\$FQDN#$FQDN#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
+  openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/pki/tls/private/localhost.key -out /etc/pki/tls/certs/localhost.crt -days 1825 -subj "/CN=$FQDN/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/OU=$SSL_ORGANISATION_UNIT"
   
   echo "Generating autoconfig.php db part through template."
   if [ -z "$MYSQL_NAME" ]; then
