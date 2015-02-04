@@ -16,7 +16,7 @@ ownCloud is a software system for what is commonly termed "file hosting". As suc
 
   docker run --name some-owncloud -d cw1900/docker-centos-owncloud
 
-This image contains `EXPOSE 80` and `EXPOSE 443`, so that ownCloud is available immediately after starting. By default this image creates a self-signed certificate to enable https connection and forces ownCloud to use it. The image will automatically detect if it's linked to a mysql/mariadb container and will ownCloud configure to use it. Therefor must be the alias name set to `mysql`. Otherwise sqlite will be used.
+This image contains `EXPOSE 80` and `EXPOSE 443`, so that ownCloud is available immediately after starting. By default this image creates a self-signed certificate to enable https connection and forces ownCloud to use it.
 
 ## Environment Variables
 
@@ -43,19 +43,13 @@ Same as `SSL_COUNTRY` but for your state. If not set, `SSL_STATE` is set to `New
 Same as `SSL_COUNTRY` but for your locality. If not set, `SSL_LOCALITY` is set to `Brooklyn`.
 
 ### `SSL_ORGANISATION`
-<!--  -->
+
 Same as `SSL_COUNTRY` but for your organisation name. If not set, `SSL_ORGANISATION` is set to `Example Brooklyn Company`.
 
-### `DB_PREFIX`
+### `SSL_ORGANISATION_UNIT`
 
-With this variable you can set the database prefix which will be used by ownCloud. If not set, `DB_PREFIX` is set to `oc_`.
-
-### `MYSQL_ROOT_PASSWORD`
-
-This variable is required if you linked the owncloud container to a mysql/mariadb container! It contains the mysql root password.
+Same as `SSL_COUNTRY` but for your organisation unit. If not set, `SSL_ORGANISATION_UNIT` is set to `IT`.
 
 ## Example
 
-`docker run --name some-mariadb -e MYSQL_ROOT_PASSWORD=mysecretpassword -d mariadb`
-
-`docker run --name some-owncloud -e PHP_APC_SIZE=512M --link some-mariadb:mysql -e FQDN="example.com" -e SSL_COUNTRY="US" -e SSL_STATE="New York" -e SSL_LOCALITY="Brooklyn" -e SSL_ORGANISATION="Example Brooklyn Company" -e DB_PREFIX="oc_" -e MYSQL_ROOT_PASSWORD="mysecretpassword" -d cw1900/docker-centos-owncloud`
+`docker run --name some-owncloud -e PHP_APC_SIZE="512M" -e FQDN="example.com" -e SSL_COUNTRY="US" -e SSL_STATE="New York" -e SSL_LOCALITY="Brooklyn" -e SSL_ORGANISATION="Example Brooklyn Company" -e SSL_ORGANISATION_UNIT="IT" -d cw1900/docker-centos-owncloud`
