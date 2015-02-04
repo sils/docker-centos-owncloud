@@ -1,3 +1,5 @@
+<?php
+$AUTOCONFIG = array(
   "directory"     => "/data",
   "appcodechecker" => false,
   "apps_paths" => array (
