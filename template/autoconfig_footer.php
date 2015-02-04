@@ -11,4 +11,5 @@
       "url"      => "/extra_apps",
       "writable" => true,
     ),
+    'forcessl' => true,
 );
