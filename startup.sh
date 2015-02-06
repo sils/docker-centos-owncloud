@@ -43,10 +43,7 @@ else
   cp /template/autoconfig.php /var/www/html/owncloud/config/autoconfig.php
   
   echo "Correcting permissions on volumes."
-  chown -R apache /var/www/html
-  chmod -R u+rwx /var/www/html
-  chown -R apache /etc/php.d
-  chmod -R u+rwx /etc/php.d
+  chown -R apache:apache /var/www/html/owncloud
   
   touch /var/www/html/owncloud/INSTALLED
 fi
