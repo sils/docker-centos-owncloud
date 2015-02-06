@@ -50,10 +50,6 @@ Same as `SSL_COUNTRY` but for your organisation name. If not set, `SSL_ORGANISAT
 
 Same as `SSL_COUNTRY` but for your organisation unit. If not set, `SSL_ORGANISATION_UNIT` is set to `IT`.
 
-### `OWNCLOUD_ALIAS`
-
-Using this variable to set the apache alias for owncloud. If not set, `OWNCLOUD_ALIAS` is empty.
-
 ## Example
 
-`docker run --name some-owncloud -e PHP_APC_SIZE="512M" -e FQDN="example.com" -e SSL_COUNTRY="US" -e SSL_STATE="New York" -e SSL_LOCALITY="Brooklyn" -e SSL_ORGANISATION="Example Brooklyn Company" -e SSL_ORGANISATION_UNIT="IT" -e OWNCLOUD_ALIAS="owncloud" -d cw1900/docker-centos-owncloud`
+`docker run --name some-owncloud -e PHP_APC_SIZE="512M" -e FQDN="example.com" -e SSL_COUNTRY="US" -e SSL_STATE="New York" -e SSL_LOCALITY="Brooklyn" -e SSL_ORGANISATION="Example Brooklyn Company" -e SSL_ORGANISATION_UNIT="IT" -d cw1900/docker-centos-owncloud`

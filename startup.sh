@@ -35,11 +35,14 @@ else
   
   openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/pki/tls/private/localhost.key -out /etc/pki/tls/certs/localhost.crt -days 1825 -subj "/CN=$FQDN/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/OU=$SSL_ORGANISATION_UNIT"
   
-  echo "Disabling apache welcome page."
+  echo "Removing apache welcome page config."
   rm -f /etc/httpd/conf.d/welcome.conf
   
-  echo "Generating owncloud.conf for apache through template."
-  sed -e "s#\$OWNCLOUD_ALIAS#$OWNCLOUD_ALIAS#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
+  echo "Removing apache default ssl config."
+  rm -f /etc/httpd/conf.d/ssl.conf
+  
+  echo "Copying owncloud.conf from template folder."
+  cp /template/owncloud.conf /etc/httpd/conf.d/owncloud.conf
   
   echo "Copying autoconfig.php from template folder."
   cp /template/autoconfig.php /var/www/html/owncloud/config/autoconfig.php
@@ -48,6 +51,7 @@ else
   chown -R apache:apache /var/www/html/owncloud
   
   touch /var/www/html/owncloud/INSTALLED
+  echo "Configuration finished!"
 fi
 
 /usr/sbin/httpd -DFOREGROUND -k start
