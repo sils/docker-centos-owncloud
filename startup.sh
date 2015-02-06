@@ -38,12 +38,8 @@ else
   echo "Removing apache welcome page config."
   rm -f /etc/httpd/conf.d/welcome.conf
   
-  echo "Removing apache default ssl config."
-  rm -f /etc/httpd/conf.d/ssl.conf
-  
   echo "Generating owncloud.conf for apache through template."
   sed -e "s#\$OWNCLOUD_ALIAS#$OWNCLOUD_ALIAS#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
-  sed -i '' -e "s#\$FQDN#$FQDN#" /etc/httpd/conf.d/owncloud.conf
   
   echo "Copying autoconfig.php from template folder."
   cp /template/autoconfig.php /var/www/html/owncloud/config/autoconfig.php
