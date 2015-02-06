@@ -33,6 +33,9 @@ else
   
   openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/pki/tls/private/localhost.key -out /etc/pki/tls/certs/localhost.crt -days 1825 -subj "/CN=$FQDN/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/OU=$SSL_ORGANISATION_UNIT"
   
+  echo "Disabling apache welcome page."
+  sed -i '' -e "s/^/#/" /etc/httpd/conf.d/welcome.conf
+  
   echo "Copying autoconfig.php from template folder."
   cp /template/autoconfig.php /var/www/html/owncloud/config/autoconfig.php
   
