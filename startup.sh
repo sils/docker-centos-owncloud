@@ -36,6 +36,9 @@ else
   echo "Disabling apache welcome page."
   rm -f /etc/httpd/conf.d/welcome.conf
   
+  echo "Copying owncloud.conf from template folder"
+  cp /template/owncloud.conf /etc/httpd/conf.d/owncloud.conf
+  
   echo "Copying autoconfig.php from template folder."
   cp /template/autoconfig.php /var/www/html/owncloud/config/autoconfig.php
   
