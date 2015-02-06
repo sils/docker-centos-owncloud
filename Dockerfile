@@ -18,7 +18,7 @@ ADD template/* /template/
 EXPOSE 80 80
 EXPOSE 443 443
 
-VOLUME /var/www/html/owncloud/data /var/www/html/owncloud/config /var/www/html/owncloud/extra_apps /etc/pki/tls/private /etc/pki/tls/certs /etc/php.d
+VOLUME /var/www/html/owncloud/data /var/www/html/owncloud/config /var/www/html/owncloud/extra_apps /etc/pki/tls/private /etc/pki/tls/certs /etc/httpd/conf.d /etc/php.d
 
 ADD startup.sh /startup.sh
 RUN chmod +x /startup.sh
