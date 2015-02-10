@@ -3,7 +3,7 @@
 if [ -e /var/www/html/owncloud/INSTALLED ]; then
   echo "Container already configured. Performing ownCloud update/upgrade."
   cd /var/www/html/owncloud
-  su apache -c php occ upgrade
+  su -c "php occ upgrade" apache
 else
   echo "Setting up container."
   
