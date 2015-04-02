@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo mkdir -p /run/httpd
+sudo chmod 777 /run/httpd
+
 if [ -e /var/www/html/owncloud/INSTALLED ]; then
   echo "Container already configured. Performing ownCloud update/upgrade."
   cd /var/www/html/owncloud
