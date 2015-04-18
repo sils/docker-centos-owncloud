@@ -2,6 +2,7 @@
 $AUTOCONFIG = array(
   "directory"     => "/data",
   "appcodechecker" => false,
+  "forcessl" => true,
   "apps_paths" => array (
     0 => array (
       "path"     => OC::$SERVERROOT."/apps",
@@ -13,5 +14,5 @@ $AUTOCONFIG = array(
       "url"      => "/extra_apps",
       "writable" => true,
     ),
-    'forcessl' => true,
+  ),
 );
