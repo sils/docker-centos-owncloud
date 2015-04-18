@@ -38,8 +38,8 @@ else
   
   openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/pki/tls/private/localhost.key -out /etc/pki/tls/certs/localhost.crt -days 1825 -subj "/CN=$FQDN/C=$SSL_COUNTRY/ST=$SSL_STATE/L=$SSL_LOCALITY/O=$SSL_ORGANISATION/OU=$SSL_ORGANISATION_UNIT"
   
-  echo "Removing apache welcome page config."
-  rm -f /etc/httpd/conf.d/welcome.conf
+  echo "NOT Removing apache welcome page config."
+  #rm -f /etc/httpd/conf.d/welcome.conf
   
   echo "Generating owncloud.conf for apache through template."
   sed -e "s#\$OWNCLOUD_ALIAS#$OWNCLOUD_ALIAS#" < /template/owncloud.conf > /etc/httpd/conf.d/owncloud.conf
