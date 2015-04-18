@@ -1,6 +1,6 @@
 <?php
 $AUTOCONFIG = array(
-  "directory"     => "/data",
+  "directory"     => OC::$SERVERROOT."/data",
   "appcodechecker" => false,
   "forcessl" => true,
   "apps_paths" => array (
