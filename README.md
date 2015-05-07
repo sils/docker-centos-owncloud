@@ -14,9 +14,9 @@ ownCloud is a software system for what is commonly termed "file hosting". As suc
 
 ## Start a owncloud instance
 
-`docker run --name some-owncloud -d cw1900/docker-centos-owncloud`
+`docker run --name some-owncloud -p 80:80 -p 443:443 -d cw1900/docker-centos-owncloud`
 
-This image contains `EXPOSE 80` and `EXPOSE 443`, so that ownCloud is available immediately after starting. By default this image creates a self-signed certificate to enable https connection and forces ownCloud to use it.
+By default this image creates a self-signed certificate to enable https connection and forces ownCloud to use it.
 
 ## Environment Variables
 
